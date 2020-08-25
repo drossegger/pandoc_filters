@@ -37,7 +37,7 @@ own consistency is inconsistent.
 ```
 will produce
 ```
-\begin[Kurt Gödel]{theorem}\label{thm:secondincompleteness}
+\begin[Kurt Gödel]{theorem}\label{secondincompleteness}
 
 Every recursively axiomatizable theory which extends \textbf{PA} and
 proves its own consistency is inconsistent.
