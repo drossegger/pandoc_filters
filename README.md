@@ -4,6 +4,8 @@ A collection of Lua filters for pandoc. At the moment only a filter creating
 environments out of description lists is supported.
 
 ## Usage
+
+### AMSmath environments
 Add `--lua-filter mathenv.lua` to your pandoc call and make sure `mathenv.lua`
 is in your path.
 
@@ -24,7 +26,9 @@ or even a list of markdown blocks and `<term>` is given by the following.
 `<environmentname>` will always be transformed into lower case. `<label>` will
 be used as the latex label for references and `<optionaltext>` will go into the
 optional argument.
-### Example
+
+
+#### Example
 ```
 Theorem Kurt Gödel (secondincompleteness)
 
@@ -39,4 +43,45 @@ Every recursively axiomatizable theory which extends \textbf{PA} and
 proves its own consistency is inconsistent.
 
 \end{theorem}
+```
+### Colored blocks and inline.
+The syntax to color inline elements is
+```
+[<text>]{.<color>}
+```
+Make sure you have the color defined in your header.
+
+To color blocks, put them in a div and add the color as a class.
+```
+:::::{.<color>}
+<blocks>
+:::::
+```
+
+#### Examples
+```
+This is [colored text]{.red}
+```
+will produce
+```
+This is {\color{red} colored text}
+```
+and 
+```
+::::{.blue}
+This is a colored paragraph.
+
+This is another colored paragraph. 
+
+::::
+```
+will produce
+```
+{\color{blue}
+
+This is a colored paragraph.
+
+This is another colored paragraph. 
+
+}
 ```
