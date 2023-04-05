@@ -83,6 +83,15 @@ function Emph(strong)
     return pandoc.RawInline('latex','\n \\end{proof}')
   end
   if strong.content[1].text=='Proof' and strong.content[2].t=='Space' then
-    return pandoc.RawInline('latex','\\begin{proof}[Proof '..strong.content[3].text..']\n')
+    local proof='\\begin{proof}['
+
+    for i,item in ipairs(strong.content) do 
+      if item.text ~= nil then
+        proof=proof .. item.text .. ' '
+      end
+    end
+    return pandoc.RawInline('latex',proof ..']\n')
+
+--    return pandoc.RawInline('latex','\\begin{proof}[Proof '..strong.content[3].text..']\n')
   end
 end
